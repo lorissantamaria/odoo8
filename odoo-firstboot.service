@@ -1,0 +1,16 @@
+[Unit]
+Description=Odoo First Boot setup
+DefaultDependencies=no
+Conflicts=shutdown.target
+Before=odoo.service
+ConditionPathIsReadWrite=/etc/odoo
+ConditionPathExists=!/etc/odoo/openerp-server.conf
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/cp /usr/share/doc/odoo/openerp-server.conf-default /etc/odoo/openerp-server.conf
+ExecStart=/usr/bin/chown -R odoo:odoo /var/lib/odoo
+
+[Install]
+WantedBy=multi-user.target
