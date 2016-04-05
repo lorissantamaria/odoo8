@@ -1,0 +1,6 @@
+[odoo-nightly]
+name=Odoo Nightly repository
+baseurl=http://nightly.odoo.com/8.0/nightly/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://nightly.odoo.com/odoo.key
