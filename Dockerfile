@@ -12,7 +12,7 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 ADD odoo-nightly.repo /etc/yum.repos.d/odoo-nightly.repo
-RUN mkdir /usr/share/doc/odoo; yum -y install epel-release; yum -y install odoo wkhtmltopdf
+RUN mkdir /usr/share/doc/odoo; yum -y install epel-release; yum -y install odoo wkhtmltopdf python-gevent
 
 ADD odoo-firstboot.service /etc/systemd/system/odoo-firstboot.service
 ADD openerp-server.conf /usr/share/doc/odoo/openerp-server.conf-default
