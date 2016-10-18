@@ -23,6 +23,7 @@ RUN mkdir /usr/share/doc/odoo; \
         odoo \
         python-gevent \
         wkhtmltopdf \
+        postgresql \
         xorg-x11-server-Xvfb; \
     yum clean all
 
