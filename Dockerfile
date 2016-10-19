@@ -23,14 +23,18 @@ RUN mkdir /usr/share/doc/odoo; \
         odoo \
         python-gevent \
         wkhtmltopdf \
-        postgresql \
+        centos-release-scl \
         xorg-x11-server-Xvfb; \
+    yum-config-manager --enable rhel-server-rhscl-7-rpms; \
+    yum -y install rh-postgresql94-postgresql; \
     yum clean all
 
 ADD wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
 ADD odoo-firstboot.service /etc/systemd/system/odoo-firstboot.service
+ADD odoo.service /etc/systemd/system/odoo.service
+ADD odoo.sysconfig /etc/sysconfig/odoo
 ADD openerp-server.conf /usr/share/doc/odoo/openerp-server.conf-default
-RUN systemctl enable odoo; \
+RUN systemctl daemon-reload; systemctl enable odoo; \
     systemctl enable odoo-firstboot.service; \
     chmod +x /usr/local/bin/wkhtmltopdf
 
