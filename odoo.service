@@ -1,0 +1,13 @@
+[Unit]
+Description=Odoo Open Source ERP and CRM
+After=network.target
+
+[Service]
+Type=simple
+User=odoo
+Group=odoo
+ExecStart=/usr/bin/odoo.py --config=/etc/odoo/openerp-server.conf
+EnvironmentFile=/etc/sysconfig/odoo
+
+[Install]
+WantedBy=multi-user.target

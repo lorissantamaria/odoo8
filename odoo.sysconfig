@@ -1,0 +1,2 @@
+PATH=/opt/rh/rh-postgresql94/root/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+LD_LIBRARY_PATH=/opt/rh/rh-postgresql94/root/usr/lib64
