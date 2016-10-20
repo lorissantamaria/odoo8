@@ -18,16 +18,19 @@ RUN systemctl mask \
 
 ADD odoo-nightly.repo /etc/yum.repos.d/odoo-nightly.repo
 RUN mkdir /usr/share/doc/odoo; \
-    yum -y install epel-release;\
+    yum -y install
+        epel-release
+        centos-release-scl; \
+    yum-config-manager --enable rhel-server-rhscl-7-rpms; \
     yum -y install \
         odoo \
         python-gevent \
         wkhtmltopdf \
-        centos-release-scl \
-        xorg-x11-server-Xvfb; \
-    yum-config-manager --enable rhel-server-rhscl-7-rpms; \
-    yum -y install rh-postgresql94-postgresql; \
-    yum clean all
+        xorg-x11-server-Xvfb \
+        npm \
+        rh-postgresql94-postgresql; \
+    yum clean all; \
+    npm install -g less less-plugin-clean-css
 
 ADD wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
 ADD odoo-firstboot.service /etc/systemd/system/odoo-firstboot.service
