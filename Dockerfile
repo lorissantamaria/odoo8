@@ -18,8 +18,8 @@ RUN systemctl mask \
 
 ADD odoo-nightly.repo /etc/yum.repos.d/odoo-nightly.repo
 RUN mkdir /usr/share/doc/odoo; \
-    yum -y install
-        epel-release
+    yum -y install \
+        epel-release \
         centos-release-scl; \
     yum-config-manager --enable rhel-server-rhscl-7-rpms; \
     yum -y install \
